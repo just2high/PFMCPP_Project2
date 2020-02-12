@@ -251,6 +251,8 @@ int main()
     //10)
     calculateBpm(12.3, 20.3);
 
+    ignoreUnused(rentACar(6, 2), startNewTrack(3), getSongTime(120, 10), createMidiNote(65, 34, 2), setLoopRegion(23, 30), arpeggiateChord(64), findRootNote(64, 68, 71), changeVolume(90, 4), calculateBpm(12.3, 20.3));
+
     std::cout << "good to go!" << std::endl;
     return 0;    
 }
