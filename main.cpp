@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string> // include to use string variable 
 
 template<typename ...T>
 void ignoreUnused(T&&...) { }
@@ -14,14 +15,12 @@ video: Chapter 2 - Part 3
  1) Write down the names of all of the primitives available in C++ (excluding wchar_t)
  put them here: 
  
- 
- 
- 
- 
- 
- 
- 
- 
+ bool
+ char
+ int
+ float
+ double
+ void
  
  
 2) for each primitive type, write out 3 variable declarations inside the variableDeclaration function.
@@ -30,6 +29,41 @@ video: Chapter 2 - Part 3
         'void' is a return type. you do not need to declare 3 variables of type 'void'.
     at the end of the function, pass each variable to the ignoreUnused function
  
+bool variableDeclaration () {
+    bool a = true;
+    bool b = false;
+    bool c = true;
+    ignoreUnused (a, b, c);
+}
+
+char variableDeclaration () {
+    char 1 = a;
+    char 2 = b;
+    char 3 = c;
+    ignoreUnused (1, 2, 3);
+}
+
+int variableDeclaration () {
+    int x = 20;
+    int y = 21;
+    int z = 22;
+    ignoreUnused (x, y, z);
+}
+
+float variableDeclaration () {
+    float i = 1.1;
+    float h = 1.2;
+    float g = 1.3;
+    ignoreUnused (i, h, g);
+}
+
+double variableDeclaration () {
+    double a = 2.22;
+    double b = 2.32;
+    double c = 2.42;
+    ignoreUnused (a, b, c);
+}
+
 3) write out 10 functions
     each declaration should have a random number of parameters in the function parameter list.
     add { ignoreUnused( ); } after each declaration in place of the closing semicolon
@@ -56,10 +90,23 @@ void variableDeclarations()
 {
     //example:
     int number = 2; //declaration of a primitive named 'number' with an initial value of '2'
-    
-    
-    
-    ignoreUnused(number); //passing each variable declared to the ignoreUnused() function
+    bool a = true;
+    bool b = false;
+    bool c = true;
+    char d = a;
+    char e = b;
+    char f = c;
+    int x = 20;
+    int y = 21;
+    int z = 22;
+    float i = 1.1f;
+    float h = 1.2f;
+    float g = 1.3f;
+    double j = 2.22;
+    double k = 2.32;
+    double l = 2.42;
+
+    ignoreUnused(number, a, b, c, d, e, f, x, y, z, i, h, g, j, k, l); //passing each variable declared to the ignoreUnused() function
 }
 /*
  10 functions
@@ -75,67 +122,136 @@ bool rentACar(int rentalDuration, int carType = 0)  //function declaration with 
  1)
  */
 
+bool startNewTrack(int diskSpaceRemaining, std::string fileName = "New Track") 
+{
+    ignoreUnused(diskSpaceRemaining, fileName); //added #include <string> in header
+
+    return {};
+}
+
+
 /*
  2)
  */
+
+double getSongTime(int bpm, int bars = 8) 
+{
+    ignoreUnused(bpm, bars);
+
+    return {};
+}
 
 /*
  3)
  */
 
+void addInstrument(int instrumentType, int trackNumber, int instances = 1) 
+{
+    ignoreUnused(instrumentType, trackNumber, instances);
+}
+
 /*
  4)
  */
+
+int createMidiNote(int noteNumber = 64, int noteVelocity = 100, int noteLength = 4) 
+{
+    ignoreUnused(noteNumber, noteVelocity, noteLength);
+
+    return {};
+}
 
 /*
  5)
  */
 
+bool setLoopRegion(int barStart, int barEnd) 
+{
+    ignoreUnused(barStart, barEnd);
+
+    return {};
+}
+
 /*
  6)
  */
+
+int arpeggiateChord(int rootNote, int chordType = 0)
+{
+    ignoreUnused(rootNote, chordType);
+
+    return {};
+}
 
 /*
  7)
  */
 
+char findRootNote(int firstNote, int secondNote, int thirdNote) 
+{
+    ignoreUnused(firstNote, secondNote, thirdNote);
+
+    return {};
+}
+
 /*
  8)
  */
+
+void createMelody(int rootNote, int melodyLength, double complexity = 1)
+{
+    ignoreUnused(rootNote, melodyLength, complexity);
+}
 
 /*
  9)
  */
 
+int changeVolume(int currentVolume, int changeAmount = 3)
+{
+    ignoreUnused(currentVolume, changeAmount);
+
+    return {};
+}
+
 /*
  10)
  */
 
+int calculateBpm(double songTime, double transientsDetected) 
+{
+    ignoreUnused(songTime, transientsDetected);
+
+    return {};
+}
+
 int main()
 {
     //example of calling that function
-    rentACar(6, 2); 
+    auto rented = rentACar(6, 2); 
     
     //1)
-    
+    bool openProject = startNewTrack(3);
     //2)
-    
+    double timeRemaining = getSongTime(120, 10);
     //3)
-    
+    /// addInstrument(2, 3, 2); returns void
     //4)
-    
+    int midiInput = createMidiNote(65, 34, 2);
     //5)
-    
+    bool loopOn = setLoopRegion(20, 30);
     //6)
-    
+    int chordMembers = arpeggiateChord(64);
     //7)
-    
+    int chordDetected = findRootNote(64, 68, 71);
     //8)
-    
+    // createMelody(23, 15, 2); returns void
     //9)
-    
+    int volume = changeVolume(90, 4);
     //10)
-    
+    int songSpeed = calculateBpm(12.3, 20.3);
+
+    ignoreUnused(rented, openProject, timeRemaining, midiInput, loopOn, chordMembers, chordDetected, volume, songSpeed);
     std::cout << "good to go!" << std::endl;
     return 0;    
 }
