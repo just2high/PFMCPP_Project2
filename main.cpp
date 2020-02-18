@@ -231,27 +231,27 @@ int main()
     auto rented = rentACar(6, 2); 
     
     //1)
-    startNewTrack(3);
+    bool openProject = startNewTrack(3);
     //2)
-    getSongTime(120, 10);
+    double timeRemaining = getSongTime(120, 10);
     //3)
-    addInstrument(2, 3, 2);
+    /// addInstrument(2, 3, 2); returns void
     //4)
-    createMidiNote(65, 34, 2);
+    int midiInput = createMidiNote(65, 34, 2);
     //5)
-    setLoopRegion(20, 30);
+    bool loopOn = setLoopRegion(20, 30);
     //6)
-    arpeggiateChord(64);
+    int chordMembers = arpeggiateChord(64);
     //7)
-    findRootNote(64, 68, 71);
+    int chordDetected = findRootNote(64, 68, 71);
     //8)
-    createMelody(23, 15, 2);
+    // createMelody(23, 15, 2); returns void
     //9)
-    changeVolume(90, 4);
+    int volume = changeVolume(90, 4);
     //10)
-    calculateBpm(12.3, 20.3);
+    int songSpeed = calculateBpm(12.3, 20.3);
 
-    ignoreUnused(rented);
+    ignoreUnused(rented, openProject, timeRemaining, midiInput, loopOn, chordMembers, chordDetected, volume, songSpeed);
     std::cout << "good to go!" << std::endl;
     return 0;    
 }
